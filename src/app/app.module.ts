@@ -8,24 +8,23 @@ import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { NgZorroAntdModule, NZ_ICONS } from 'ng-zorro-antd';
 import { IconDefinition } from '@ant-design/icons-angular';
 import * as AllIcons from '@ant-design/icons-angular/icons';
-
 import { AppComponent } from './app.component';
-
 import { NZ_I18N, en_US } from 'ng-zorro-antd';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-import {WelcomeComponent} from './pages/welcome/welcome.component'
-
+import {MainComponent} from './pages/main/main.component'
+import { HeaderComponent } from './pages/header/header.component';
 import { RouterModule, Routes } from '@angular/router';
+import { MenuComponent } from './pages/menu/menu.component';
+import { BrreadcrumbComponent } from './pages/breadcrumb/breadcrumb.component';
+import { TestcontentComponent } from './pages/content/testcontent/testcontent.component';
 registerLocaleData(en);
 
 const routes: Routes = [
-
-    { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+    { path: '', redirectTo: 'main', pathMatch: 'full' },
   
-    { path: 'welcome', component: WelcomeComponent },
-  
-  ];
+    { path: 'main', component: MainComponent },
+];
 
 const antDesignIcons = AllIcons as {
   [key: string]: IconDefinition;
@@ -33,10 +32,36 @@ const antDesignIcons = AllIcons as {
 const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesignIcons[key])
 
 @NgModule({
-  imports: [  RouterModule.forRoot(routes), BrowserModule, FormsModule, HttpClientModule, HttpClientJsonpModule, ReactiveFormsModule, NgZorroAntdModule, BrowserAnimationsModule, ScrollingModule, DragDropModule ],
-  exports: [RouterModule],
-  declarations: [ AppComponent,WelcomeComponent ],
-  bootstrap:    [ AppComponent ],
-  providers   : [ { provide: NZ_I18N, useValue: en_US }, { provide: NZ_ICONS, useValue: icons } ]
+  imports: [
+    RouterModule.forRoot(routes), 
+    BrowserModule, 
+    FormsModule, 
+    HttpClientModule, 
+    HttpClientJsonpModule, 
+    ReactiveFormsModule, 
+    NgZorroAntdModule, 
+    BrowserAnimationsModule, 
+    ScrollingModule, 
+    DragDropModule 
+  ],
+  exports: [
+    RouterModule
+  ],
+  declarations: [
+    AppComponent,
+    MenuComponent,
+    HeaderComponent, 
+    MenuComponent, 
+    BrreadcrumbComponent,
+    MainComponent,
+    TestcontentComponent
+   ],
+  bootstrap: [
+    AppComponent 
+  ],
+  providers: [
+    { provide: NZ_I18N, useValue: en_US }, 
+    { provide: NZ_ICONS, useValue: icons }
+  ]
 })
 export class AppModule { }

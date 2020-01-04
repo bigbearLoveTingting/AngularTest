@@ -1,0 +1,21 @@
+<nz-layout>
+  <!-- 头部 -->
+  <nz-header>
+    <app-header></app-header>
+  </nz-header>
+  <nz-layout>
+    <!-- 菜单 -->
+    <nz-sider nzWidth="200px" nzTheme="light" [nzTrigger]="null">
+      <app-menu></app-menu>
+    </nz-sider>
+    <nz-layout class="inner-layout">
+      <!-- 面包屑 -->
+      <app-breadcrumb></app-breadcrumb>
+      <!-- 内容 -->
+      <nz-content>
+        <!-- <router-outlet></router-outlet> -->
+        <app-testcontent></app-testcontent>
+      </nz-content>
+    </nz-layout>
+  </nz-layout>
+</nz-layout>
