@@ -18,12 +18,25 @@ import { RouterModule, Routes } from '@angular/router';
 import { MenuComponent } from './pages/menu/menu.component';
 import { BrreadcrumbComponent } from './pages/breadcrumb/breadcrumb.component';
 import { TestcontentComponent } from './pages/content/testcontent/testcontent.component';
+
 registerLocaleData(en);
 
 const routes: Routes = [
-    { path: '', redirectTo: 'main', pathMatch: 'full' },
-  
-    { path: 'main', component: MainComponent },
+  {
+    path: '', 
+    redirectTo: 'main', 
+    pathMatch: 'full' 
+  },
+  { 
+    path: 'main', 
+    component: MainComponent,
+    children: [
+      {
+        path:'testcontent',
+        component: TestcontentComponent
+      }
+    ]
+  },
 ];
 
 const antDesignIcons = AllIcons as {
@@ -42,7 +55,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     NgZorroAntdModule, 
     BrowserAnimationsModule, 
     ScrollingModule, 
-    DragDropModule 
+    DragDropModule,
+    // MainModule
   ],
   exports: [
     RouterModule
